@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   position.c                                         :+:      :+:    :+:   */
+/*   alg_position.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: loandrad <loandrad@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 09:31:05 by loandrad          #+#    #+#             */
-/*   Updated: 2023/06/26 10:51:35 by loandrad         ###   ########.fr       */
+/*   Updated: 2023/06/29 16:50:20 by loandrad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,14 @@ int	lowest_position(t_mystr **stack)
 	return (lowest_pos);
 }
 
+/* get_target:
+Picks the best target position in stack A for the given index of
+an element in stack B. First checks if the index of the B element can
+be placed somewhere in between elements in stack A, by checking whether
+there is an element in stack A with a bigger index. If not, it finds the
+element with the smallest index in A and assigns that as the target position.
+*/
+
 static int	target(t_mystr **a, int b_ind,
 								int target_ind, int target_pos)
 {
@@ -78,6 +86,14 @@ static int	target(t_mystr **a, int b_ind,
 	}
 	return (target_pos);
 }
+
+/* target_position:
+Assigns a target position in stack A to each element of stack A.
+The target position is the spot the element in B needs to
+get to in order to be sorted correctly. This position will
+be used to calculate the cost of moving each element to
+its target position in stack A.
+*/
 
 void	target_position(t_mystr **a, t_mystr **b)
 {
